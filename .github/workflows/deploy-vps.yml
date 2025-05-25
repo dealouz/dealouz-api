@@ -44,7 +44,7 @@ jobs:
           cp .env build/.env
 
       - name: 🛁 Clean install for production
-        run: cd build && npm ci --production --ignore-scripts
+        run: cd build && npm ci --omit=dev
 
       - name: 📤 Deploy to VPS
         uses: easingthemes/ssh-deploy@main
@@ -69,7 +69,7 @@ jobs:
           SCRIPT_AFTER: |
             cd ${{ env.APP_DIR }}/html
             echo "Restarting API with PM2..."
-            pm2 restart ${{ env.DOMAIN }} || pm2 start server.js --name ${{ env.DOMAIN }}
+            pm2 restart ${{ env.DOMAIN }} || pm2 start bin/server.js --name ${{ env.DOMAIN }}
             pm2 save
             echo "Restarting Nginx..."
             sudo systemctl restart nginx
