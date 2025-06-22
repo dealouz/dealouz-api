@@ -11,12 +11,14 @@ export default class PromoCodeSource extends BaseModel {
    * The unique identifier for the promo code source.
    */
   @column({ isPrimary: true })
+  // @required @example(1)
   declare public id: number
 
   /**
    * The ID of the associated promo code.
    */
   @column()
+  // @required @example(1)
   declare public promo_code_id: number
 
   /**
@@ -29,11 +31,13 @@ export default class PromoCodeSource extends BaseModel {
    * The URL of the source where the promo code was found.
    */
   @column()
+  // @required @example('https://example.com/promo-code')
   declare public source_url: string
 
   /**
    * The timestamp when the promo code was discovered.
    */
   @column.dateTime({ autoCreate: true })
+  // @required @example('2023-10-01T12:00:00Z')
   declare public discovered_at: DateTime
 }
