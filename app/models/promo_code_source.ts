@@ -35,6 +35,13 @@ export default class PromoCodeSource extends BaseModel {
   declare public source_url: string
 
   /**
+   * The name of the source where the promo code was found.
+   */
+  @column()
+  // @required @example('Example Source')
+  declare public source_name: string
+
+  /**
    * The timestamp when the promo code was discovered.
    */
   @column.dateTime({ autoCreate: true })

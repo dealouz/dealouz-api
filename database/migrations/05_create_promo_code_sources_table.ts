@@ -14,6 +14,7 @@ export default class extends BaseSchema {
         .inTable('promo_codes')
         .onDelete('CASCADE')
       table.text('source_url').notNullable()
+      table.string('source_name').notNullable()
       table.timestamp('discovered_at').notNullable()
     })
   }
